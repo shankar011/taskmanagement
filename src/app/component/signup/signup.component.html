@@ -1,0 +1,47 @@
+<div class="container" id="container">
+    <div class="form-container sign-in">
+      <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+        <h1>Sign Up</h1>
+        <div class="social-icons">
+          <a href="#"><span class="bi bi-google"></span> </a>
+          <a href="#"><span class="bi bi-instagram"></span> </a>
+          <a href="#"><span class="bi bi-twitter"></span> </a>
+          <a href="#"><span class="bi bi-linkedin"></span> </a>
+        </div>
+  
+        <input type="text" placeholder="Enter Name" formControlName="name">
+        <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
+          Name is required
+        </div>
+  
+        <input type="email" placeholder="Enter Email" formControlName="email">
+        <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+          Please enter a valid email.
+        </div>
+  
+        <input type="password" placeholder="Password" formControlName="password">
+        <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+          Password must be at least 6 characters.
+        </div>
+  
+        <input type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+        <div *ngIf="signupForm.errors?.['notMatching'] && signupForm.get('confirmPassword')?.touched">
+          Passwords do not match.
+        </div>
+  
+        <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+  
+        <div *ngIf="errorMessage">{{ errorMessage }}</div>
+      </form>
+    </div>
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-right">
+          <h1>Welcome, identifiable!</h1>
+          <p>Enter your personal details to use all of the site's features.</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
