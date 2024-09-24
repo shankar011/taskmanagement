@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,9 @@ export class LoginComponent {
 
   @Output() navigateToSignup = new EventEmitter<void>();
   loginForm: FormGroup;
-  private apiUrl = 'https://56fc-103-174-35-4.ngrok-free.app/login';
+  
+  
+  private apiUrl = 'https://e428-103-174-35-5.ngrok-free.app';  
 
   constructor(
     private http: HttpClient, 
@@ -25,29 +27,35 @@ export class LoginComponent {
     });
   }
 
-  // Login form submission
+  
   onLogin() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-
-      // Call the API for login
-      this.http.post<any>(this.apiUrl, { email, password }).subscribe(
+  
+      console.log('Attempting to log in with:', { email, password }); 
+  
+      
+      this.http.post<any>(`${this.apiUrl}/login`, { email, password }, {
+        headers: { 'Content-Type': 'application/json' } 
+      }).subscribe(
         response => {
-          if (response.success) {
-            // If login is successful, store user info or token
+          console.log('Login response:', response);  
+          
+         
+          if (response.token) {
             localStorage.setItem('token', response.token); 
             this.router.navigate(['/dashboard']); 
-          } else if (response.firstTimeUser) {
-            // If first-time user, redirect to sign-up
-            alert('First-time user, please sign up');
-            this.goToSignup();
           } else {
             alert('Login failed. Invalid email or password.');
           }
         },
-        error => {
+        (error: HttpErrorResponse) => {
           console.error('Login failed', error);
-          alert('An error occurred during login.');
+          if (error.status === 400) {
+            alert('Bad Request: Invalid email or password.');
+          } else {
+            alert('An error occurred during login.');
+          }
         }
       );
     } else {
@@ -55,8 +63,8 @@ export class LoginComponent {
     }
   }
 
-  
   goToSignup() {
     this.router.navigate(['/signup']);
   }
 }
+

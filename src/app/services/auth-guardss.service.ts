@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
 
-  private apiUrl = 'https://56fc-103-174-35-4.ngrok-free.app/api/auth'; 
+  private apiUrl = 'https://56fc-103-174-35-4.ngrok-free.app/'; 
 
   constructor(private http: HttpClient) { }
 
