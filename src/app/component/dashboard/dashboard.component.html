@@ -2,7 +2,7 @@
   <div class="main">
     <h2>Task Dashboard</h2>
 
-    <!-- Task Form (Add/Edit) -->
+  
     <form (ngSubmit)="saveTask()">
       <input type="text" [(ngModel)]="task.title" placeholder="Task Title" name="title" required />
       <input type="text" [(ngModel)]="task.description" placeholder="Task Description" name="description" />
@@ -11,7 +11,7 @@
 
     <hr>
 
-    <!-- Task Table -->
+   
     <table class="task-table">
       <thead>
         <tr>

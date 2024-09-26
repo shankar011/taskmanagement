@@ -26,7 +26,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  // Signup Method
+  
   signup(name: string, email: string, password: string): Observable<any> {
       const signupData = { name, email, password };
       return this.http.post(this.endpoints.signup, signupData).pipe(
@@ -37,7 +37,7 @@ export class AuthService {
       );
   }
 
-  // Login Method
+  
   login(email: string, password: string): Observable<AuthResponse | null> {  
       const loginData = { email, password };
       return this.http.post<AuthResponse>(this.endpoints.login, loginData).pipe(
@@ -54,7 +54,7 @@ export class AuthService {
       );
   }
 
-  // Forgot Password Method
+  
   forgotPassword(email: string): Observable<any> {
       const forgotPasswordData = { email };
       return this.http.post(this.endpoints.forgotPassword, forgotPasswordData).pipe(
@@ -65,18 +65,18 @@ export class AuthService {
       );
   }
 
-  // Logout Method
+ 
   logout(): void {
       localStorage.removeItem('token');
       
   }
 
-  // Check if user is authenticated
+  
   isAuthenticated(): boolean {
       return !!this.getTokenFromStorage();
   }
 
-  // Private methods for token handling
+  
   private setToken(token: string): void {
       localStorage.setItem('token', token);
   }

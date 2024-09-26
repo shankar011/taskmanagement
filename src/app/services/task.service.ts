@@ -8,7 +8,7 @@ import { Task } from '../model/task.model';
   providedIn: 'root'
 })
 export class TaskService {
-  private apiUrl = 'https://ce6c-103-174-35-54.ngrok-free.app';  // Update API URL as necessary
+  private apiUrl = 'https://ce6c-103-174-35-54.ngrok-free.app';  
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -18,28 +18,28 @@ export class TaskService {
 
   constructor(private http: HttpClient) {}
 
-  // Get all tasks
+  
   getAllTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(`${this.apiUrl}/alltasks`).pipe(
       catchError(this.handleError)
     );
   }
 
-  // Add a new task
+  
   addTask(task: Task): Observable<Task> {
     return this.http.post<Task>(`${this.apiUrl}/addtask`, task, this.httpOptions).pipe(
       catchError(this.handleError)
     );
   }
 
-  // Update an existing task
+  
   updateTask(task: Task): Observable<any> {
     return this.http.put(`${this.apiUrl}/updatetask/${task.id}`, task, this.httpOptions).pipe(
       catchError(this.handleError)
     );
   }
 
-  // Delete a task
+  
   deleteTask(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/deletetask/${id}`, this.httpOptions).pipe(
       catchError(this.handleError)
