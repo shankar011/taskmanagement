@@ -56,6 +56,8 @@
   }
   
   .content {
+    display: flex;
+    justify-content: space-around;
     padding: 20px;
     flex-grow: 1;
     background-color: #f4f4f4;
@@ -87,4 +89,161 @@
     }
 }
 
-  
+  /* Styling for the main content area */
+.content {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the menu toggle button */
+.menu-toggle {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.menu-toggle span {
+  font-size: 24px;
+}
+
+/* Main dashboard section */
+.main {
+  padding: 20px;
+  text-align: center;
+}
+
+.main h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.main p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Task input form */
+input[type="text"] {
+  padding: 10px;
+  width: 60%;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Task list */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+li input[type="text"] {
+  width: 70%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+li button {
+  background-color: #dc3545; /* Red color for delete button */
+}
+
+li button:hover {
+  background-color: #c82333;
+}
+
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.task-table th, .task-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.task-table th {
+  background-color: #f4f4f4;
+}
+
+.task-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+button:hover {
+  color: #0056b3;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    padding: 15px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  li input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

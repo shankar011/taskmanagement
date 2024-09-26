@@ -13,8 +13,7 @@ export class LoginComponent {
   @Output() navigateToSignup = new EventEmitter<void>();
   loginForm: FormGroup;
   
-  
-  // private apiUrl = 'https://e428-103-174-35-5.ngrok-free.app';  
+   
   private apiUrl = "https://ce6c-103-174-35-54.ngrok-free.app";
 
   constructor(
